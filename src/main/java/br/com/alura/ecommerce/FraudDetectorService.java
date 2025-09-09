@@ -57,6 +57,8 @@ public class FraudDetectorService {
         properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         //Quando se cria um consumer é preciso informar o grupo
         properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, FraudDetectorService.class.getSimpleName());
+        //Muita empresa usa um poll de consumo 1 em 1
+        properties.setProperty(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, "1");
 
         return properties;
     }
