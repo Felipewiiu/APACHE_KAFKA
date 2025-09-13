@@ -2,13 +2,18 @@ package br.com.alura.ecommerce;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
-public class EmailService {
+import java.io.Closeable;
+import java.io.IOException;
+
+public class EmailService  {
 
     public static void main(String[] args) {
 
         var emailService = new EmailService();
-        var service = new KafkaService("ECOMMERCE_SEND_EMAIL", emailService::parse);
-        service.run();
+
+            var service = new KafkaService(FraudDetectorService.class.getSimpleName(), "ECOMMERCE_SEND_EMAIL", emailService::parse);
+            service.run();
+
 
     }
 
@@ -27,6 +32,7 @@ public class EmailService {
         }
         System.out.println("Email sent");
     }
+
 
 
 }

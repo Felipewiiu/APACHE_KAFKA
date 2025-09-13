@@ -27,7 +27,7 @@ KAFKA_CLUSTER_ID="$(./windows/kafka-storage.bat random-uuid)"
 ### Comando para subir o broker
 
 ````shell
-./windows/kafka-server-start.bat ../config/server.properties
+C:/KAFICA/kafka_2.13-4.1.0/bin/windows/kafka-server-start.bat  C:/KAFICA/kafka_2.13-4.1.0/config/server.properties
 ````
 
 ### Comando para criar um topic
@@ -39,7 +39,7 @@ KAFKA_CLUSTER_ID="$(./windows/kafka-storage.bat random-uuid)"
 ### Comando para listar um topic
 
 ````shell
- bin/windows/kafka-topics.bat --list --bootstrap-server localhost:9092
+  C:/KAFICA/kafka_2.13-4.1.0/bin/windows/kafka-topics.bat --list --bootstrap-server localhost:9092
 ````
 
 ### Criando um producer no console
@@ -53,10 +53,10 @@ bin/windows/kafka-console-producer.bat --bootstrap-server localhost:9092 --topic
 ````shell
 bin/windows/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic LOJA_NOVO_PEDIDO --from-beginning
 ````
-## Grupo de consumo
+## Lista grupo de consumo
 
 ````shell
-.\bin\windows\kafka-consumer-groups.bat --all-groups --bootstrap-server localhost:9092 --describe
+  C:/KAFICA/kafka_2.13-4.1.0/bin/windows/kafka-consumer-groups.bat --all-groups --bootstrap-server localhost:9092 --describe
 ````
 
 
@@ -72,4 +72,16 @@ bin/windows/kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic
 .\bin\windows\kafka-topics.bat --alter --bootstrap-server localhost:9092 --topic ECOMMERCE_NEW_ORDER --partitions 3 
 
 ````
+
+### Diretórios Kafka
+
+- Para guardar os logs de maneira permanente é preciso trocar o log da pasta temp do arquivo ``server.properties``
+
+````text
+############################# Log Basics #############################
+
+# A comma separated list of directories under which to store log files
+log.dirs=C:/KAFICA/kafka_2.13-4.1.0/data/kafka
+````
+
 
